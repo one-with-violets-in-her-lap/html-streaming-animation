@@ -7,7 +7,31 @@
     <title>Vite + TS</title>
   </head>
   <body>
-    <h1 class="font-black text-9xl">Something</h1>
+    <div class="px-6 py-12 grid grid-cols-2 gap-6 min-h-screen">
+      <div>
+        <h1
+          class="text-6xl font-medium mb-10 opacity-0 translate-y-20"
+          id="heading"
+        >
+          Creating
+        </h1>
+
+        <div
+          class="relative w-full h-82 opacity-0 blur-2xl transition-all duration-500 overflow-hidden before:absolute before:w-full before:top-0 before:left-0 before:h-22 before:bg-gradient-to-b before:from-white before:to-white/10 before:z-10 after:absolute after:w-full after:bottom-0 after:left-0 after:h-22 after:bg-gradient-to-b after:to-white after:from-white/10 after:z-10"
+          id="codeBlockContainer"
+        >
+          <pre class="text-sm min-h-full" id="codeBlock"></pre>
+        </div>
+      </div>
+
+      <div id="previewContainer" class="h-full">
+        <iframe
+          src=""
+          frameborder="0"
+          class="h-full max-h-full w-full rounded-xl scale-0 transition-all duration-500 ease-linear"
+        ></iframe>
+      </div>
+    </div>
 
     <script type="module" src="/src/main.ts"></script>
   </body>

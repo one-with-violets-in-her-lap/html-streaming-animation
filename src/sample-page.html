@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glass Landing Page</title>
+    <style>
+      :root {
+        --bg-color: #f0f4f8;
+        --glass-bg: rgba(255, 255, 255, 0.25);
+        --glass-border: rgba(255, 255, 255, 0.18);
+        --text-color: #1a1a1a;
+        --accent-color: #3b82f6;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        font-family: "Segoe UI", sans-serif;
+        background: var(--bg-color);
+        color: var(--text-color);
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url("https://plus.unsplash.com/premium_photo-1670430004754-60d86c50fb81?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+          no-repeat center center/cover;
+        z-index: 0;
+        filter: blur(20px);
+        transform: scale(1.1);
+      }
+
+      header {
+        padding: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--accent-color);
+      }
+
+      nav a {
+        margin-left: 1.5rem;
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      nav a:hover {
+        color: var(--accent-color);
+      }
+
+      .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 100px);
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .glass-box {
+        background: var(--glass-bg);
+        border-radius: 20px;
+        padding: 3rem;
+        max-width: 600px;
+        width: 100%;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .glass-box:hover {
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+      }
+
+      .glass-box h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .glass-box p {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+
+      .glass-box button {
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .glass-box button:hover {
+        background-color: #2563eb;
+      }
+
+      footer {
+        text-align: center;
+        padding: 1rem;
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      @media (max-width: 600px) {
+        .glass-box h1 {
+          font-size: 2rem;
+        }
+
+        .glass-box p {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">GlassSite</div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Pricing</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="glass-box">
+        <h1>Modern & Elegant UI</h1>
+        <p>
+          Experience the elegance of liquid glass UI — a clean, modern aesthetic
+          that brings clarity and focus to your content.
+        </p>
+        <button onclick="scrollToFooter()">Get Started</button>
+      </div>
+    </section>
+
+    <footer id="footer">© 2025 GlassSite. All rights reserved.</footer>
+
+    <script>
+      function scrollToFooter() {
+        document
+          .getElementById("footer")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
