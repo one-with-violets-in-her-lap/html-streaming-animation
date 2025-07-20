@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
 @layer base {
-  body {
-    font-family: var(--font-mono);
-    color: var(--color-neutral-800);
-  }
+    body {
+        color: var(--color-neutral-800);
+    }
 }
