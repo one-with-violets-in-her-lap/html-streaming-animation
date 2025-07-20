@@ -52,7 +52,7 @@ export function App() {
                     className="text-6xl font-serif font-bold mb-10 max-sm:text-4xl max-sm:mb-4"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, type: "spring", delay: 0.6 }}
+                    transition={{ duration: 0.8, type: "spring", delay: 0.7 }}
                 >
                     Creating
                 </motion.h1>
@@ -60,16 +60,23 @@ export function App() {
                 <motion.div
                     initial={{ opacity: 1, filter: "blur(40px)" }}
                     animate={{ opacity: 1, filter: "blur(0px)" }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
+                    transition={{ duration: 0.5, delay: 0.7 }}
                 >
                     <CodePreview code={code} />
                 </motion.div>
 
                 <motion.div
-                    className="w-px bg-gradient-to-b from-transparent to-pink-400 absolute top-0 right-0"
+                    className="w-px bg-gradient-to-b from-transparent to-violet-400 absolute top-2 right-0"
                     initial={{ height: "0px" }}
                     animate={{ height: "100%" }}
                     transition={{ duration: 0.5, delay: 0.1 }}
+                ></motion.div>
+
+                <motion.div
+                    className="h-px bg-gradient-to-r from-transparent to-violet-400 absolute -bottom-2 right-0"
+                    initial={{ width: "0px" }}
+                    animate={{ width: "86%" }}
+                    transition={{ duration: 0.5, delay: 0.6 }}
                 ></motion.div>
             </div>
 
