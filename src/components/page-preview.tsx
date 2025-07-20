@@ -37,7 +37,7 @@ const STYLES_TO_INJECT_IN_PREVIEW_IFRAME = `
 
 @keyframes appear {
     0% {
-	scale: 0%;
+	scale: 120%;
 	opacity: 0;
     }
     
