@@ -1,16 +1,35 @@
 import "@/assets/styles/main.css";
 import samplePageHtml from "@/sample-page.html?raw";
 
+import { DiffDOM } from "diff-dom";
 import { getHtmlElementBySelectorOrThrow } from "@/utils/get-element-or-throw";
 import { wait } from "@/utils/wait";
-import { DiffDOM } from "diff-dom";
 
 const STYLES_TO_INJECT_IN_PREVIEW_IFRAME = `
-html, body {
-    overflow: hidden;
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
 }
 
-body * {
+::-webkit-scrollbar-track {
+  background: rgb(240, 240, 245);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: oklch(90% 0 0);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(85% 0 0);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+* {
     opacity: 0;
     animation-name: appear;
     animation-duration: 0.4s;
@@ -97,6 +116,8 @@ async function startSampleHtmlStreaming(
     }
 
     const previewUpdateInterval = setInterval(updatePreview, 3000);
+
+    // codeBlock.textContent = samplePageHtml;
 
     for (const character of samplePageHtml) {
         codeBlock.textContent += character;
