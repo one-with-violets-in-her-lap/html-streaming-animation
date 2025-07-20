@@ -2,6 +2,6 @@
 
 @layer base {
     body {
-        color: var(--color-neutral-800);
+        color: var(--color-neutral-700);
     }
 }
