@@ -4,4 +4,10 @@
     body {
         color: var(--color-neutral-700);
     }
+
+    .code-highlight-block,
+    .code-highlight-block * {
+        overflow: hidden !important;
+        background-color: transparent !important;
+    }
 }

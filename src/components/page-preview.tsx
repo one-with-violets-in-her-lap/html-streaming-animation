@@ -108,7 +108,7 @@ export function PagePreview({ code }: { code: string }) {
     }
 
     return (
-        <div className="relative h-full max-sm:h-[700px]">
+        <div className="relative h-full max-sm:h-[540px]">
             <motion.iframe
                 ref={iframeRef}
                 className="h-full max-h-full w-full rounded-xl"
