@@ -23,11 +23,11 @@ export function App() {
             for (
                 let currentCharacterIndex = 0;
                 currentCharacterIndex <= samplePageHtml.length;
-                currentCharacterIndex += 120
+                currentCharacterIndex += 50
             ) {
                 currentCode += samplePageHtml.slice(
                     currentCharacterIndex,
-                    currentCharacterIndex + 120,
+                    currentCharacterIndex + 50,
                 );
                 setCode(currentCode);
 
@@ -102,7 +102,7 @@ export function App() {
             <AnimatePresence>
                 {isCompleted && (
                     <motion.div
-                        className="w-full h-full p-10 fixed top-1/2 left-1/2 -translate-1/2"
+                        className="w-full h-full p-10 fixed top-1/2 left-1/2 -translate-1/2 max-md:p-4"
                         initial={{ scaleY: 0, opacity: 0 }}
                         animate={{ opacity: 1, scaleY: 1 }}
                         transition={{
@@ -112,7 +112,7 @@ export function App() {
                         }}
                     >
                         <iframe
-                            className="bg-violet-100 rounded-xl w-full h-full shadow-xl"
+                            className="bg-violet-100 rounded-xl w-full h-full shadow-xl shadow-black/10"
                             srcDoc={code}
                         />
                     </motion.div>
