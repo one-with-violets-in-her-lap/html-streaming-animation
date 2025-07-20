@@ -10,6 +10,8 @@ import { wait } from "@/utils/wait";
 export function App() {
     const [code, setCode] = useState("");
 
+    const [isCompleted, setIsCompleted] = useState(false);
+
     useEffect(() => {
         let currentCode = "";
         let unmounted = false;
@@ -34,9 +36,11 @@ export function App() {
                     console.log(
                         "Component unmounted. Cancelling code streaming",
                     );
-                    break;
+                    return;
                 }
             }
+
+            setIsCompleted(true);
         }
 
         startMockedCodeStreaming().catch(console.error);
@@ -79,12 +83,6 @@ export function App() {
                     animate={{ width: "86%" }}
                     transition={{ duration: 0.5, delay: 0.6 }}
                 ></motion.div>
-
-                {/* <motion.div */}
-                {/*     initial={{ opacity: 0 }} */}
-                {/*     animate={{ opacity: 1 }} */}
-                {/*     transition={{ duration: 0.5, delay: 1.9 }} */}
-                {/* ></motion.div> */}
             </div>
 
             <PagePreview code={code} />
