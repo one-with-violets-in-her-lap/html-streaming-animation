@@ -34,6 +34,7 @@ const STYLES_TO_INJECT_IN_PREVIEW_IFRAME = `
     animation-name: appear;
     animation-duration: 0.4s;
     animation-fill-mode: both;
+    transition: all 0.3s ease;
 }
 
 @keyframes appear {
@@ -58,16 +59,27 @@ window.addEventListener("load", async () => {
     const previewIframe = document.querySelector("#previewContainer iframe");
 
     if (!(previewIframe instanceof HTMLIFrameElement)) {
-        throw new Error("#previewContainer element must have an iframe");
+        throw new TypeError("#previewContainer element must have an iframe");
     }
 
     heading.style.opacity = "1";
-    heading.style.transition = "0.5s ease all";
+    heading.style.transition = "0.5s ease all 0.6s";
     heading.style.translate = "none";
 
     codeBlockContainer.style.opacity = "1";
     codeBlockContainer.style.filter = "blur(0px)";
-    codeBlockContainer.style.transition = "0.8s ease all";
+    codeBlockContainer.style.transition = "0.8s ease all 0.7s";
+
+    document
+        .querySelectorAll(".gradient-stroke")
+        .forEach((gradientStrokeElement) => {
+            if (!(gradientStrokeElement instanceof HTMLElement)) {
+                throw new TypeError(".gradient-stroke must be an HTMLElement");
+            }
+
+            gradientStrokeElement.style.transition = "1s ease all";
+            gradientStrokeElement.style.height = "100%";
+        });
 
     await startSampleHtmlStreaming(
         getHtmlElementBySelectorOrThrow("#codeBlock"),
