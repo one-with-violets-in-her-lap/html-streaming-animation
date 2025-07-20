@@ -1,171 +1,298 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Glass Landing Page</title>
-    <style>
-      :root {
-        --bg-color: #f0f4f8;
-        --glass-bg: rgba(255, 255, 255, 0.25);
-        --glass-border: rgba(255, 255, 255, 0.18);
-        --text-color: #1a1a1a;
-        --accent-color: #3b82f6;
-      }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Developer Landing</title>
+        <style>
+            :root {
+                --bg-color: #f9f9fb;
+                --glass-color: rgba(255, 255, 255, 0.6);
+                --border-color: rgba(255, 255, 255, 0.3);
+                --text-color: #111;
+                --accent-color: #6366f1;
+            }
 
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
 
-      html,
-      body {
-        height: 100%;
-        font-family: "Segoe UI", sans-serif;
-        background: var(--bg-color);
-        color: var(--text-color);
-        overflow-x: hidden;
-      }
+            html,
+            body {
+                font-family: "Inter", sans-serif;
+                background: var(--bg-color);
+                scroll-behavior: smooth;
+            }
 
-      body::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: url("https://plus.unsplash.com/premium_photo-1670430004754-60d86c50fb81?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
-          no-repeat center center/cover;
-        z-index: 0;
-        filter: blur(20px);
-        transform: scale(1.1);
-      }
+            body::before {
+                content: "";
+                position: fixed;
+                top: var(--y);
+                left: var(--x);
+                width: 400px;
+                height: 400px;
+                background: radial-gradient(
+                    circle,
+                    rgba(99, 102, 241, 0.1) 0%,
+                    transparent 80%
+                );
+                transform: translate(-50%, -50%);
+                pointer-events: none;
+                transition:
+                    top 0.2s ease,
+                    left 0.2s ease;
+                z-index: 0;
+            }
 
-      header {
-        padding: 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
+            .container {
+                position: relative;
+                z-index: 1;
+                min-height: 100vh;
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                align-content: start;
+                justify-content: center;
+                padding: 4rem 2rem;
+            }
 
-      .logo {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: var(--accent-color);
-      }
+            .card,
+            .features,
+            .about {
+                backdrop-filter: blur(19px);
+                -webkit-backdrop-filter: blur(19px);
+                background: var(--glass-color);
+                border: 1px solid var(--border-color);
+                border-radius: 2rem;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+                padding: 4rem 3rem;
+                text-align: center;
+                width: 100%;
+                max-width: 1000px;
+                margin: 2rem auto;
+                animation: floatIn 1s ease-out forwards;
+                opacity: 0;
+                transform: translateY(30px);
+            }
 
-      nav a {
-        margin-left: 1.5rem;
-        text-decoration: none;
-        color: var(--text-color);
-        font-weight: 500;
-        transition: color 0.2s ease;
-      }
+            @keyframes floatIn {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
 
-      nav a:hover {
-        color: var(--accent-color);
-      }
+            h1,
+            h2 {
+                font-weight: 800;
+                color: var(--text-color);
+                margin-bottom: 1rem;
+                word-break: break-word;
+            }
 
-      .hero {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        min-height: calc(100vh - 100px);
-        text-align: center;
-        padding: 2rem;
-      }
+            h1 {
+                font-size: 3rem;
+            }
 
-      .glass-box {
-        background: var(--glass-bg);
-        border-radius: 20px;
-        padding: 3rem;
-        max-width: 600px;
-        width: 100%;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid var(--glass-border);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-      }
+            h2 {
+                font-size: 2.25rem;
+            }
 
-      .glass-box:hover {
-        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
-      }
+            p {
+                color: #444;
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+                line-height: 1.6;
+            }
 
-      .glass-box h1 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-      }
+            .btn {
+                padding: 0.8rem 2rem;
+                border: none;
+                border-radius: 9999px;
+                font-weight: 600;
+                font-size: 1rem;
+                background: var(--accent-color);
+                color: #fff;
+                cursor: pointer;
+                transition:
+                    background 0.3s ease,
+                    transform 0.3s ease;
+            }
 
-      .glass-box p {
-        font-size: 1.125rem;
-        line-height: 1.6;
-        margin-bottom: 2rem;
-      }
+            .btn:hover {
+                background: #4f46e5;
+                transform: scale(1.05);
+            }
 
-      .glass-box button {
-        background-color: var(--accent-color);
-        color: white;
-        border: none;
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
+            .features-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+                margin-top: 2rem;
+            }
 
-      .glass-box button:hover {
-        background-color: #2563eb;
-      }
+            .feature-item {
+                background: rgba(255, 255, 255, 0.5);
+                border: 1px solid var(--border-color);
+                border-radius: 1rem;
+                padding: 1.5rem;
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+                transition: transform 0.3s ease;
+            }
 
-      footer {
-        text-align: center;
-        padding: 1rem;
-        font-size: 0.9rem;
-        color: #555;
-      }
+            .feature-item:hover {
+                transform: translateY(-5px);
+            }
 
-      @media (max-width: 600px) {
-        .glass-box h1 {
-          font-size: 2rem;
-        }
+            .feature-item h3 {
+                color: var(--accent-color);
+                font-size: 1.25rem;
+                margin-bottom: 0.5rem;
+            }
 
-        .glass-box p {
-          font-size: 1rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="logo">GlassSite</div>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">Features</a>
-        <a href="#">Pricing</a>
-        <a href="#">Contact</a>
-      </nav>
-    </header>
+            .about p {
+                max-width: 800px;
+                margin: 0 auto;
+            }
 
-    <section class="hero">
-      <div class="glass-box">
-        <h1>Modern & Elegant UI</h1>
-        <p>
-          Experience the elegance of liquid glass UI — a clean, modern aesthetic
-          that brings clarity and focus to your content.
-        </p>
-        <button onclick="scrollToFooter()">Get Started</button>
-      </div>
-    </section>
+            @media (max-width: 1024px) {
+                .card,
+                .features,
+                .about {
+                    padding: 3rem 2rem;
+                }
+                h1 {
+                    font-size: 2.5rem;
+                }
+                h2 {
+                    font-size: 2rem;
+                }
+            }
 
-    <footer id="footer">© 2025 GlassSite. All rights reserved.</footer>
+            @media (max-width: 768px) {
+                .card,
+                .features,
+                .about {
+                    padding: 2.5rem 1.5rem;
+                }
+                h1 {
+                    font-size: 2.2rem;
+                }
+                h2 {
+                    font-size: 1.85rem;
+                }
+                .btn {
+                    width: 100%;
+                    font-size: 1rem;
+                }
+            }
 
-    <script>
-      function scrollToFooter() {
-        document
-          .getElementById("footer")
-          .scrollIntoView({ behavior: "smooth" });
-      }
-    </script>
-  </body>
+            @media (max-width: 480px) {
+                h1 {
+                    font-size: 1.75rem;
+                }
+                h2 {
+                    font-size: 1.5rem;
+                }
+                p {
+                    font-size: 0.95rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="card">
+                <h1>HTML is cool</h1>
+
+                <p>
+                    Deploy lightning-fast apps with modern tooling, minimal
+                    design, and powerful DX.
+                </p>
+
+                <button
+                    class="btn"
+                    onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})"
+                >
+                    Explore Features
+                </button>
+            </div>
+        </div>
+
+        <section id="features" class="features container">
+            <h2>Features</h2>
+            <p>
+                Everything you need to accelerate your development workflow and
+                deliver exceptional results.
+            </p>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>Instant Deploy</h3>
+                    <p>
+                        Push to Git and see your changes live in seconds with
+                        edge caching and atomic builds.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <h3>Preview Links</h3>
+                    <p>
+                        Generate unique preview URLs for every commit to
+                        streamline collaboration and testing.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <h3>Analytics Built-In</h3>
+                    <p>
+                        Monitor performance and traffic without invasive scripts
+                        or external dependencies.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <h3>Custom Domains</h3>
+                    <p>
+                        Connect your own domains with HTTPS automatically
+                        configured and managed.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about container">
+            <h2>About Us</h2>
+            <p>
+                We're a team of passionate developers focused on creating
+                high-performance deployment tools with elegance and clarity.
+            </p>
+        </section>
+
+        <script>
+            document.body.addEventListener("mousemove", (e) => {
+                const x = e.clientX + "px";
+                const y = e.clientY + "px";
+                document.body.style.setProperty("--x", x);
+                document.body.style.setProperty("--y", y);
+            });
+
+            const observers = document.querySelectorAll(
+                ".card, .features, .about",
+            );
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = "1";
+                            entry.target.style.transform = "translateY(0)";
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                { threshold: 0.1 },
+            );
+
+            observers.forEach((el) => observer.observe(el));
+        </script>
+    </body>
 </html>
