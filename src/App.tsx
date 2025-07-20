@@ -3,6 +3,7 @@ import samplePageHtml from "@/assets/sample-page.html?raw";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { CodePreview } from "@/components/code-preview";
+import { PagePreview } from "@/components/page-preview";
 import { wait } from "@/utils/wait";
 
 export function App() {
@@ -15,11 +16,18 @@ export function App() {
         async function startMockedCodeStreaming() {
             console.log("Starting mocked code streaming");
 
-            for (const character of samplePageHtml) {
-                currentCode += character;
+            for (
+                let currentCharacterIndex = 0;
+                currentCharacterIndex <= samplePageHtml.length;
+                currentCharacterIndex += 40
+            ) {
+                currentCode += samplePageHtml.slice(
+                    currentCharacterIndex,
+                    currentCharacterIndex + 40,
+                );
                 setCode(currentCode);
 
-                await wait(1);
+                await wait(100);
 
                 if (unmounted) {
                     console.log(
@@ -64,6 +72,8 @@ export function App() {
                     transition={{ duration: 0.5, delay: 0.1 }}
                 ></motion.div>
             </div>
+
+            <PagePreview code={code} />
         </main>
     );
 }
