@@ -85,8 +85,6 @@ async function startSampleHtmlStreaming(
     const domDiff = new DiffDOM();
 
     function updatePreview() {
-        previewIframe.style.scale = "100%";
-
         const parsedDocument = domParser.parseFromString(
             codeBlock.textContent || "",
             "text/html",
@@ -107,15 +105,21 @@ async function startSampleHtmlStreaming(
             parsedDocument.documentElement,
         );
 
-        console.log(diffs);
-
         domDiff.apply(
             previewIframe.contentWindow.document.documentElement,
             diffs,
         );
+
+        previewIframe.contentWindow.document.body.scrollTo({
+            top: previewIframe.contentWindow.document.body.scrollHeight,
+            behavior: "smooth",
+        });
     }
 
-    const previewUpdateInterval = setInterval(updatePreview, 3000);
+    const previewUpdateInterval = setInterval(updatePreview, 500);
+
+    previewIframe.style.transition = "all 0.6s ease 0.6s";
+    previewIframe.style.scale = "100%";
 
     // codeBlock.textContent = samplePageHtml;
 

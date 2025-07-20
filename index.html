@@ -1,38 +1,43 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
-  </head>
-  <body>
-    <div class="px-6 py-12 grid grid-cols-2 gap-6 min-h-screen">
-      <div>
-        <h1
-          class="text-6xl font-medium mb-10 opacity-0 translate-y-20"
-          id="heading"
-        >
-          Creating
-        </h1>
-
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vite + TS</title>
+    </head>
+    <body>
         <div
-          class="relative w-full h-82 opacity-0 blur-2xl transition-all duration-500 overflow-hidden before:absolute before:w-full before:top-0 before:left-0 before:h-22 before:bg-gradient-to-b before:from-white before:to-white/10 before:z-10 after:absolute after:w-full after:bottom-0 after:left-0 after:h-22 after:bg-gradient-to-b after:to-white after:from-white/10 after:z-10"
-          id="codeBlockContainer"
+            class="px-6 py-12 grid grid-cols-2 gap-6 min-h-screen max-sm:grid-cols-1 max-sm:py-6"
         >
-          <pre class="text-sm min-h-full" id="codeBlock"></pre>
+            <div>
+                <h1
+                    class="text-6xl font-medium mb-10 opacity-0 translate-y-20 max-sm:text-4xl max-sm:mb-4"
+                    id="heading"
+                >
+                    Creating
+                </h1>
+
+                <div
+                    class="relative w-full h-82 max-sm:h-32 opacity-0 blur-2xl transition-all duration-500 overflow-hidden before:absolute before:w-full before:top-0 before:left-0 before:h-22 before:bg-gradient-to-b before:from-white before:to-white/10 before:z-10 after:absolute after:w-full after:bottom-0 after:left-0 after:h-22 after:bg-gradient-to-b after:to-white after:from-white/10 after:z-10 max-sm:after:h-8 max-sm:before:h-8"
+                    id="codeBlockContainer"
+                >
+                    <pre
+                        class="text-sm min-h-full w-full max-lg:text-xs"
+                        id="codeBlock"
+                    ></pre>
+                </div>
+            </div>
+
+            <div id="previewContainer" class="h-full max-sm:h-[700px]">
+                <iframe
+                    src=""
+                    frameborder="0"
+                    class="h-full max-h-full w-full rounded-xl scale-0 border border-neutral-200"
+                ></iframe>
+            </div>
         </div>
-      </div>
 
-      <div id="previewContainer" class="h-full">
-        <iframe
-          src=""
-          frameborder="0"
-          class="h-full max-h-full w-full rounded-xl scale-0 transition-all duration-500 ease-linear"
-        ></iframe>
-      </div>
-    </div>
-
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+        <script type="module" src="/src/main.ts"></script>
+    </body>
 </html>
