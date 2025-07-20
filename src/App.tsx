@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { CodePreview } from "@/components/code-preview";
 import { PagePreview } from "@/components/page-preview";
+import { MessDrawing } from "@/components/mess-drawing";
 import { wait } from "@/utils/wait";
 
 export function App() {
@@ -49,12 +50,12 @@ export function App() {
         <main className="px-6 py-12 grid grid-cols-2 gap-7 min-h-screen max-sm:grid-cols-1 max-sm:py-6">
             <div className="relative">
                 <motion.h1
-                    className="text-6xl font-serif font-bold mb-10 max-sm:text-4xl max-sm:mb-4"
+                    className="text-6xl font-serif font-bold mb-10 flex items-center gap-x-2 max-sm:text-4xl max-sm:mb-4"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, type: "spring", delay: 0.7 }}
                 >
-                    Creating
+                    <MessDrawing /> Creating
                 </motion.h1>
 
                 <motion.div
@@ -78,6 +79,12 @@ export function App() {
                     animate={{ width: "86%" }}
                     transition={{ duration: 0.5, delay: 0.6 }}
                 ></motion.div>
+
+                {/* <motion.div */}
+                {/*     initial={{ opacity: 0 }} */}
+                {/*     animate={{ opacity: 1 }} */}
+                {/*     transition={{ duration: 0.5, delay: 1.9 }} */}
+                {/* ></motion.div> */}
             </div>
 
             <PagePreview code={code} />
