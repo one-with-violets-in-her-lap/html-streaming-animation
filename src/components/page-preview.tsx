@@ -27,7 +27,7 @@ const STYLES_TO_INJECT_IN_PREVIEW_IFRAME = `
   background: transparent;
 }
 
-* {
+body * {
     opacity: 0;
     animation-name: appear;
     animation-duration: 0.4s;
