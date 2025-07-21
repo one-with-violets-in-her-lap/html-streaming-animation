@@ -2,7 +2,7 @@ import { DiffDOM } from "diff-dom";
 import { motion } from "motion/react";
 import { useEffect, useRef } from "react";
 
-const PAGE_PREVIEW_UPDATE_INTERVAL_MILLISECONDS = 1000;
+const PAGE_PREVIEW_UPDATE_INTERVAL_MILLISECONDS = 500;
 const STYLES_TO_INJECT_IN_PREVIEW_IFRAME = `
 ::-webkit-scrollbar {
   width: 8px;

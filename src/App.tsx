@@ -23,11 +23,11 @@ export function App() {
             for (
                 let currentCharacterIndex = 0;
                 currentCharacterIndex <= samplePageHtml.length;
-                currentCharacterIndex += 50
+                currentCharacterIndex += 37
             ) {
                 currentCode += samplePageHtml.slice(
                     currentCharacterIndex,
-                    currentCharacterIndex + 50,
+                    currentCharacterIndex + 37,
                 );
                 setCode(currentCode);
 
